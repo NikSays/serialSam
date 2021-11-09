@@ -13,7 +13,7 @@ import (
 // Infinite loop reading upto 128 bytes from serial file
 // and sending them to the channel.
 // Designed to run as a goroutine
-func ReadLoop (port *serial.Port, dataChan chan<- []byte){
+func ReadLoop(port *serial.Port, dataChan chan<- []byte) {
 	for{
 		buffer := make([]byte, 128)
 		n, _ := port.Read(buffer)
@@ -25,7 +25,7 @@ func ReadLoop (port *serial.Port, dataChan chan<- []byte){
 // Infinite loop reading from STDIN
 // and sending them to the serial file.
 // Designed to run as a goroutine
-func WriteLoop (port *serial.Port){
+func WriteLoop(port *serial.Port) {
 var data string;
 	for {
 		fmt.Scanf("%s", &data)
@@ -34,7 +34,7 @@ var data string;
 }
 
 // Returns opened serial file
-func Open(device string, baud int) (*serial.Port, error){
+func Open(device string, baud int) (*serial.Port, error) {
 	return serial.OpenPort(&serial.Config{Name: device, Baud: baud})
 }
 
